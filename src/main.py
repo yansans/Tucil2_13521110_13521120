@@ -35,13 +35,13 @@ if __name__ == '__main__':
         (83, 944), (441, -484), (232, 381), (901, 80), (-819, -657), 
         (-886, -665), (-691, 61), (-140, -271), (106, 20), (-156, 119), 
         (726, -148), (-922, 448)]
-    
+
     p = sorted(p, key = lambda x: x[0])
     for i in range(len(p)):
         l.append(Point(p[i][0], p[i][1]))
 
     test = Points(l)
-    test.print_points()
 
-    d = solve_2d(test.points, test.size)
+    (d , po) = solve_2d(test.points, test.size)
     print(d)
+    printListCoord(po)
