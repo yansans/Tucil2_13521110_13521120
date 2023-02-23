@@ -35,13 +35,16 @@ class Points:
         for i in range(self.size):
             print(f"{i+1}." , self.points[i].coords)
     
-a = 5
-
-def generate_points(n, dimension, lim = a):
+def generate_points(n, dimension, lim = 100):
     points = Points()
+    part = lim // n
+    below = -lim
+    above = below + part
     for _ in range(n):
         coords = []
         for _ in range(dimension):
-            coords.append(random.randint(-lim, lim))
+            coords.append(random.randint(below,above))
+            below = above
+            above = below + part
         points.add_point(Point(*coords))
     return points
