@@ -2,24 +2,16 @@ import math
 import random
 
 class Point:
-    def __init__(self, *coords: list):
-        self.coords = coords
-        self.dimension = len(coords)
-
-    def euclideanDistance(self, q: 'Point') -> float:
-        if self.dimension != q.dimension:
-            raise ValueError("Point have different dimensions!")
-        return math.sqrt(sum((self.coords[i] - q.coords[i])**2 
-                             for i in range(self.dimension)))
-    
-    def n_distance(self, q: 'Point', n: int) -> float:
-        return abs(self.coords[n] - q.coords[n])
+    def __init__(self, x, y, z):
+        self.x = x
+        self.y = y
+        self.z = z
 
     def print_point(self):
-        print(self.coords)
+        print(f"({self.x}, {self.y}, {self.z})")
 
-def distance(p: Point, q: Point) -> float:
-    return p.euclideanDistance(q)
+# def distance(p: Point, q: Point) -> float:
+#     return p.euclideanDistance(q)
 
 def n_distance(p: Point, q: Point, n: int) -> float:
     return p.n_distance(q, n)
@@ -55,3 +47,15 @@ def generate_points(n: int, dimension: int, lim: int = 100) -> Points:
         points.add_point(Point(*coords))
 
     return points
+
+def genereate_points(n):
+  points = []
+  for i in range(n):
+    points.append(Point(random.randint(-100, 100), random.randint(-100, 100), random.randint(-100, 100)))
+  return points
+
+def print_points(Points):
+  for i in range (len(Points)):
+    print(f"{i+1}.", end = " ")
+    Points[i].print_point()
+
