@@ -1,12 +1,10 @@
 from point import *
 from solve import *
-from array import *
 from plot3d import *
 import time
 
 if __name__ == '__main__':
     points = genereate_points(1000)
-    # print_points(points)
     
     print(f"Result with divide and conquer:")
     start_time = time.time()
