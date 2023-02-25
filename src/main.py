@@ -5,7 +5,7 @@ from plot3d import *
 import time
 
 if __name__ == '__main__':
-    points = genereate_points(128)
+    points = genereate_points(1000)
     # print_points(points)
     
     print(f"Result with divide and conquer:")
@@ -26,4 +26,4 @@ if __name__ == '__main__':
     brute[1].print_point()
     print(f"Distance {bruteDist}")
 
-    plot3d(points,dnc)
+    # plot3d(points,dnc)

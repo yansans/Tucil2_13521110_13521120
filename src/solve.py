@@ -93,18 +93,22 @@ def solve(points) -> tuple:
 
     # Cari pasangan terdekat yang berada di strip
     strip = []
-    for i in range(n):
-      if abs(points[i].x - points[mid].x) < resDist:
-        strip.append(points[i])
+    for point in left:
+        if point.x >= points[mid].x - resDist:
+            strip.append(point)
+    for point in right:
+        if point.x <= points[mid].x + resDist:
+            strip.append(point)
 
     strip.sort(key=lambda p: p.y)
     
     for i in range (len(strip)):
         for j in range(i + 1, len(strip)):
-            if strip[j].y - strip[i].y >= resDist:
+            if  (abs(strip[i].x - strip[j].x) > resDist) or (abs(strip[i].y - strip[j].y) > resDist) or (abs(strip[i].z - strip[j].z) > resDist):
                 break
-            if distance(strip[i], strip[j]) < resDist:
+            min = distance(strip[i], strip[j])
+            if min < resDist:
                 res = (strip[i], strip[j])
-                resDist = distance(strip[i], strip[j])
+                resDist = min
 
     return res, resDist
