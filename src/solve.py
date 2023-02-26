@@ -1,7 +1,12 @@
 from point import *
 from sort import *
+from main import *
+import globals
 
+
+count = 0
 def euclidean_distance(p1: Point, p2: Point) -> float:
+    globals.count += 1
     return math.sqrt(sum([(p1.c[i] - p2.c[i])**2 for i in range(p1.d)]))
 
 def check_coord(points: list, i: int, j:int, dist: int) -> bool:

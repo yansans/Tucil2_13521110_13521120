@@ -7,9 +7,12 @@ class Point:
         self.d = len(coords)
     
     def print_point(self):
+        print("(", end="")
         for i in range(self.d):
-            print(f"{self.c[i]} ", end = "")
-        print()
+            if i == self.d - 1:
+                print(f"{self.c[i]})")
+            else:
+                print(f"{self.c[i]}; " , end="")
 
 def random_point(number_of_point: int, dimension: int) -> list:
   points = []
