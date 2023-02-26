@@ -1,7 +1,6 @@
 from point import *
 from solve import *
-from plot3d import *
-from testcases import *
+from plotPoint import *
 import time
 
 def nearest_neighbour(points: list, key: str, sort: int = 0) -> tuple:
@@ -23,15 +22,13 @@ def nearest_neighbour(points: list, key: str, sort: int = 0) -> tuple:
 
 if __name__ == '__main__':
 
-    d = 3
+    d = 5
     n_point = 10
 
     # 1 merge sort
     # 2 quick sort
     # else python sort
-    sort = 1
-
-    plot = 1
+    sort = 2
 
     points = random_point(n_point ,d)
     
@@ -41,5 +38,6 @@ if __name__ == '__main__':
 
     nn_b , nnDist_b = nearest_neighbour(points, "brute")
 
-    if d == 3 and plot == 1:
-        plot3d(points, nn_dnc)
+    # if d == 3 and plot == 1:
+    #     plot3d(points, nn_dnc)
+    plotPoint(points, nn_dnc, d)

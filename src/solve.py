@@ -63,12 +63,13 @@ def solve(points: list, sort: int = 0) -> tuple:
             strip.append(point)
 
     # Sort strip berdasarkan y
-    if sort == 1:
-        strip = merge_sort(strip, 1)
-    elif sort == 2:
-        strip = quicksort(strip, 1)
-    else:
-        strip.sort(key=lambda p: p.c[1])
+    if (len(strip) > 1 and points[0].d > 1):
+        if sort == 1:
+            strip = merge_sort(strip, 1)
+        elif sort == 2:
+            strip = quicksort(strip, 1)
+        else:
+            strip.sort(key=lambda p: p.c[1])
     
     for i in range (len(strip)):
         for j in range(i + 1, len(strip)):
