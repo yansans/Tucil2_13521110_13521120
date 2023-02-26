@@ -1,53 +1,42 @@
-def merge_sort(arr, l, m, r):
-    n1 = m - l + 1
-    n2 = r - m
- 
-    # create temp arrays
-    L = [0] * (n1)
-    R = [0] * (n2)
- 
-    # Copy data to temp arrays L[] and R[]
-    for i in range(0, n1):
-        L[i] = arr[l + i]
- 
-    for j in range(0, n2):
-        R[j] = arr[m + 1 + j]
- 
-    # Merge the temp arrays back into arr[l..r]
-    i = 0     # Initial index of first subarray
-    j = 0     # Initial index of second subarray
-    k = l     # Initial index of merged subarray
- 
-    while i < n1 and j < n2:
-        if L[i] <= R[j]:
-            arr[k] = L[i]
+from point import *
+
+def merge_sort(points: list, n: int) -> list:
+    if len(points) <= 1:
+        return points
+
+    mid = len(points) // 2
+    left = merge_sort(points[:mid], n)
+    right = merge_sort(points[mid:], n)
+
+    return merge(left, right, n)
+
+
+def merge(left: list, right: list, n: int) -> list:
+    result = []
+    i = 0
+    j = 0
+    while i < len(left) and j < len(right):
+        if left[i].c[n] <= right[j].c[n]:
+            result.append(left[i])
             i += 1
         else:
-            arr[k] = R[j]
+            result.append(right[j])
             j += 1
-        k += 1
- 
-    # Copy the remaining elements of L[], if there
-    # are any
-    while i < n1:
-        arr[k] = L[i]
-        i += 1
-        k += 1
- 
-    # Copy the remaining elements of R[], if there
-    # are any
-    while j < n2:
-        arr[k] = R[j]
-        j += 1
-        k += 1
+
+    result += left[i:]
+    result += right[j:]
+
+    return result
 
 
-def quick_sort(arr: list, n : int) -> list:
-    if len(arr) <= 1:
-        return arr
-    else:
-        pivot = arr[len(arr)//2].c[n]
-    left = [p for p in arr if p.c[n] < pivot]
-    middle = [p for p in arr if p.c[n] == pivot]
-    right = [p for p in arr if p.c[n] > pivot]
-    return quick_sort(left, n) + middle + quick_sort(right, n)
+def quicksort(points: list, n : int) -> list:
+    if len(points) <= 1:
+        return points
+
+    pivot = points[len(points) // 2]
+    
+    left = [p for p in points if p.c[n] < pivot.c[n]]
+    middle = [p for p in points if p.c[n] == pivot.c[n]]
+    right = [p for p in points if p.c[n] > pivot.c[n]]
+    
+    return quicksort(left, n) + middle + quicksort(right, n)

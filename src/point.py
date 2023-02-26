@@ -4,18 +4,23 @@ import random
 class Point:
     def __init__(self, coords: list):
         self.c = coords
-
+        self.d = len(coords)
+    
     def print_point(self):
-        print(f"({self.c[0]}, {self.c[1]}, {self.c[2]})")
+        for i in range(self.d):
+            print(f"{self.c[i]} ", end = "")
+        print()
 
-def genereate_points(n: int) -> list:
+def random_point(number_of_point: int, dimension: int) -> list:
   points = []
-  for i in range(n):
-    points.append(Point([random.randint(-100, 100), random.randint(-100, 100), random.randint(-100, 100)]))
+  for _ in range(number_of_point):
+    point = []
+    for _ in range(dimension):
+      point.append(round(random.uniform(0, 100), 3))
+    points.append(Point(point))
   return points
 
 def print_points(Points: list):
   for i in range (len(Points)):
-    print(f"{i+1}.", end = " ")
     Points[i].print_point()
 
