@@ -3,8 +3,6 @@ from sort import *
 from main import *
 import globals
 
-
-count = 0
 def euclidean_distance(p1: Point, p2: Point) -> float:
     globals.count += 1
     return math.sqrt(sum([(p1.c[i] - p2.c[i])**2 for i in range(p1.d)]))
@@ -26,7 +24,7 @@ def solve_bruteForce(points: list):
                 result = (points[i], points[j])
     return result, min
 
-def solve(points: list, sort: int = 0) -> tuple:
+def solve(points: list, sort: int) -> tuple:
     n = len(points)
 
     if n <= 3:
@@ -51,12 +49,12 @@ def solve(points: list, sort: int = 0) -> tuple:
     leftRes, leftDistance = solve(left, sort)
     rightRes, rightDistance = solve(right, sort)
 
-    if rightDistance <= leftDistance:
-      res = rightRes
-      resDist = rightDistance
+    if  rightDistance > leftDistance:
+        res = leftRes
+        resDist = leftDistance
     else:
-      res = leftRes
-      resDist = leftDistance
+        res = rightRes
+        resDist = rightDistance
 
     # Cari pasangan terdekat yang berada di strip
     strip = []
@@ -78,7 +76,6 @@ def solve(points: list, sort: int = 0) -> tuple:
     
     for i in range (len(strip)):
         for j in range(i + 1, len(strip)):
-            # if  (abs(strip[i].c[0] - strip[j].c[0]) > resDist) or (abs(strip[i].c[1] - strip[j].c[1]) > resDist) or (abs(strip[i].c[2] - strip[j].c[2]) > resDist):
             if check_coord(strip, i, j, resDist):
                 break
             min = euclidean_distance(strip[i], strip[j])

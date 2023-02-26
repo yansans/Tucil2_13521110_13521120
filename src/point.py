@@ -14,12 +14,12 @@ class Point:
             else:
                 print(f"{self.c[i]}; " , end="")
 
-def random_point(number_of_point: int, dimension: int) -> list:
+def random_point(number_of_point: int, dimension: int, rounding: int = 3) -> list:
   points = []
   for _ in range(number_of_point):
     point = []
     for _ in range(dimension):
-      point.append(round(random.uniform(0, 100), 3))
+      point.append(round(random.uniform(0, 100), rounding))
     points.append(Point(point))
   return points
 
