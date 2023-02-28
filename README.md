@@ -71,6 +71,8 @@ Pemakaian program
     : > 1
     ```
 
+     -- Untuk mengubah batas dari fungsi random dapat dilakukan dengan mengubah variable bound di main.py
+
 3. Output hasil
 
     ```bash
