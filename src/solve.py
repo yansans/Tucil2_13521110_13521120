@@ -34,13 +34,10 @@ def solve(points: list, sort: int) -> tuple:
         return solve_bruteForce(points)
 
     # Sort points berdasarkan x
-    if sort == 1:
-        points = merge_sort(points, 0)
-    elif sort == 2:
+    if sort == 2:
         points = quicksort(points, 0)
     else:
-        points.sort(key=lambda p: p.c[0])
-
+        points = merge_sort(points, 0)
 
     # Bagi menjadi dua bagian
     mid = n // 2
@@ -59,7 +56,6 @@ def solve(points: list, sort: int) -> tuple:
     else:
         res = rightRes
 
-
     # Cari pasangan terdekat yang berada di strip
     strip = []
     for point in left:
@@ -71,12 +67,10 @@ def solve(points: list, sort: int) -> tuple:
 
     # Sort strip berdasarkan y
     if (len(strip) > 1 and dim > 1):
-        if sort == 1:
-            strip = merge_sort(strip, 1)
-        elif sort == 2:
+        if sort == 2:
             strip = quicksort(strip, 1)
         else:
-            strip.sort(key=lambda p: p.c[1])
+            strip = merge_sort(strip, 1)
     
     for i in range (len(strip)):
         for j in range(i + 1, min(i + globals.max_point + 1, len(strip))):

@@ -62,7 +62,7 @@ def menu(type : int) -> int:
         minval = 0
         err = "Rounding must be greater than 0"
     elif type == 4:
-        prompt = "Enter the sorting method\n1. Merge sort \n2. Quick sort\n :"
+        prompt = "Enter the sorting method\n1. Merge sort(default) \n2. Quick sort\n :"
         minval = 1
         err = "Sorting method must be 1 or 2"
     while True:
