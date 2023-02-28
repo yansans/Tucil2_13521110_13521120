@@ -25,16 +25,49 @@ def nearest_neighbour(points: list, key: str, sort: int = 1) -> tuple:
 
 
 if __name__ == '__main__':
-    d = 3
-    n_point = 1000
-    rounding = 0
+    
+    while True:
+        try:
+            d = int(input("Enter dimension: "))
+            if d < 1:
+                print("Dimension must be greater than 0")
+                continue
+            break
+        except:
+            print("Invalid input")
 
+    while True:
+        try:
+            n_point = int(input("Enter number of point: "))
+            if n_point < 2:
+                print("Number of point must be greater than 1")
+                continue
+            break
+        except:
+            print("Invalid input")
+
+    while True:
+        try:
+            rounding = int(input("Enter rounding (ketelitian angka di belakang koma): "))
+            if rounding < 0:
+                print("Rounding must be greater than 0")
+                continue
+            break
+        except:
+            print("Invalid input")
+    
     # 1 merge sort
     # 2 quick sort
     # else python sort
-    sort = 1
+    while True:
+        try:
+            sort = int(input("Enter sorting method (1: merge sort, 2: quick sort, else python sort): "))
+            break
+        except:
+            print("Invalid input")
 
-    points = random_point(n_point ,d, rounding)
+    print("==================================================================================")
+    points = random_point(n_point ,d, rounding, 10)
     
     nn_dnc , nnDist_dnc = nearest_neighbour(points, "dnc", sort)
 
@@ -42,4 +75,7 @@ if __name__ == '__main__':
 
     nn_b , nnDist_b = nearest_neighbour(points, "brute")
 
-    # plotPoint(points, nn_dnc, d)
+    print("==================================================================================")
+    visual = input("Do you want to visualize the result? (y/n): ")
+    if visual == "y":
+        plotPoint(points, nn_dnc, d)
