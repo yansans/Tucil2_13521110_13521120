@@ -1,6 +1,6 @@
 # Tucil 2 Strategi Algoritma
 
-Pencarian sepasang titik terdekat dengan Algoritma Divide and Conquer dalam bahasa Python
+Pencarian sepasang titik terdekat dengan Algoritma _Divide and Conquer_ dalam bahasa Python
 
 ## Pasangan Titik Terdekat 3D dengan Algoritma Divide and Conquer
 
@@ -52,22 +52,48 @@ Pemakaian program
 1. Menu pertama
 
     ```bash
-
+    Welcome to the nearest pair point program
+    Press enter to continue...
     ```
 
 2. Prompt untuk menerima input user
 
     ```bash
-   ...
-
+    Enter the dimension of the points: 
+    > 3
+    Enter the number of points: 
+    > 100
+    Enter the rounding of the points(ketelitian angka dibelakang koma): 
+    > 3
+    Enter the sorting method
+    1. Merge sort(default)
+    2. Quick sort
+    : > 1
     ```
 
 3. Output hasil
 
     ```bash
-    
+    Result with divide and conquer:
+    23.825883865 ms
+    (-194.229; -214.913; 840.767)
+    (-198.687; -213.23; 848.886)
+    Distance: 9.414054068
+    Number of euclidian operation: 1185
 
+    Result with brute force:
+    591.631174088 ms
+    (-198.687; -213.23; 848.886)
+    (-194.229; -214.913; 840.767)
+    Distance: 9.414054068
+    Number of euclidian operation: 499500
+
+    Do you want to visualize the result? (y/n):
+    y
     ```
+
+    Visualisasi hasil
+    ![Gambar plot output](img/plot.png)
 
 ## Project Status
 

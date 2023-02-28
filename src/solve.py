@@ -71,7 +71,8 @@ def solve(points: list, sort: int) -> tuple:
             strip = quicksort(strip, 1)
         else:
             strip = merge_sort(strip, 1)
-    
+
+    # Cari jarak terdekat di strip
     for i in range (len(strip)):
         for j in range(i + 1, min(i + globals.max_point + 1, len(strip))):
             if check_coord(strip, i, j, resDist):

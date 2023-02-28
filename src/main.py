@@ -5,7 +5,6 @@ import globals
 import time
 
 def main():
-
     d = menu(1)
     n_point = menu(2)
     rounding = menu(3)
@@ -58,7 +57,7 @@ def menu(type : int) -> int:
         minval = 1
         err = "Number of points must be greater than 0"
     elif type == 3:
-        prompt = "Enter the rounding of the points: "
+        prompt = "Enter the rounding of the points(ketelitian angka dibelakang koma): "
         minval = 0
         err = "Rounding must be greater than 0"
     elif type == 4:
@@ -76,7 +75,6 @@ def menu(type : int) -> int:
                 print("Invalid input")
                 continue
     return num
-
 
 def animation():
     animation = [
@@ -97,7 +95,7 @@ def animation():
 
 def startscreen():
     animation()
-    print("Welcome to the nearest point program")
+    print("Welcome to the nearest pair point program")
     input("Press enter to continue...")
 
 if __name__ == "__main__":

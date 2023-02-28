@@ -3,8 +3,8 @@ import random
 
 class Point:
     def __init__(self, coords: list):
-        self.c = coords
-        self.d = len(coords)
+        self.c = coords         # list yang berisi koordinat
+        self.d = len(coords)    # dimensi dari coords
     
     def print_point(self):
         print("(", end="")
