@@ -26,6 +26,7 @@ def solve_bruteForce(points: list):
 
 def solve(points: list, sort: int) -> tuple:
     n = len(points)
+    dim = points[0].d
 
     if n == 1:
         return None, math.inf
@@ -51,12 +52,13 @@ def solve(points: list, sort: int) -> tuple:
     leftRes, leftDistance = solve(left, sort)
     rightRes, rightDistance = solve(right, sort)
 
+    resDist = min(leftDistance, rightDistance)
+
     if  rightDistance > leftDistance:
         res = leftRes
-        resDist = leftDistance
     else:
         res = rightRes
-        resDist = rightDistance
+
 
     # Cari pasangan terdekat yang berada di strip
     strip = []
@@ -68,7 +70,7 @@ def solve(points: list, sort: int) -> tuple:
             strip.append(point)
 
     # Sort strip berdasarkan y
-    if (len(strip) > 1 and points[0].d > 1):
+    if (len(strip) > 1 and dim > 1):
         if sort == 1:
             strip = merge_sort(strip, 1)
         elif sort == 2:
@@ -77,12 +79,12 @@ def solve(points: list, sort: int) -> tuple:
             strip.sort(key=lambda p: p.c[1])
     
     for i in range (len(strip)):
-        for j in range(i + 1, len(strip)):
+        for j in range(i + 1, min(i + globals.max_point + 1, len(strip))):
             if check_coord(strip, i, j, resDist):
                 break
-            min = euclidean_distance(strip[i], strip[j])
-            if min < resDist:
+            mind = euclidean_distance(strip[i], strip[j])
+            if mind < resDist:
                 res = (strip[i], strip[j])
-                resDist = min
+                resDist = mind
 
     return res, resDist

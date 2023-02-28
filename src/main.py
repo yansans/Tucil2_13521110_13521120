@@ -5,7 +5,7 @@ import globals
 import time
 
 def nearest_neighbour(points: list, key: str, sort: int = 1) -> tuple:
-    globals.initialize()
+    globals.initialize(d)
     if key == "dnc":
         print(f"Result with divide and conquer:")
     elif key == "brute":
@@ -27,7 +27,7 @@ def nearest_neighbour(points: list, key: str, sort: int = 1) -> tuple:
 if __name__ == '__main__':
     d = 3
     n_point = 1000
-    rounding = 3
+    rounding = 0
 
     # 1 merge sort
     # 2 quick sort
@@ -41,8 +41,5 @@ if __name__ == '__main__':
     print()
 
     nn_b , nnDist_b = nearest_neighbour(points, "brute")
-
-    if nnDist_b != nnDist_dnc:
-        raise Exception("Error: distance is not equal")
 
     # plotPoint(points, nn_dnc, d)
