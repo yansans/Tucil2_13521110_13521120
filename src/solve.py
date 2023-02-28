@@ -27,7 +27,9 @@ def solve_bruteForce(points: list):
 def solve(points: list, sort: int) -> tuple:
     n = len(points)
 
-    if n <= 3:
+    if n == 1:
+        return None, math.inf
+    if n == 2:
         return solve_bruteForce(points)
 
     # Sort points berdasarkan x
@@ -43,7 +45,7 @@ def solve(points: list, sort: int) -> tuple:
     mid = n // 2
     mid_point = points[mid]
     left = points[:mid]
-    right = points[mid:]
+    right = points[mid+1:]
 
     # Cari pasangan terdekat di setiap bagian
     leftRes, leftDistance = solve(left, sort)

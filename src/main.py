@@ -27,7 +27,7 @@ def nearest_neighbour(points: list, key: str, sort: int = 1) -> tuple:
 if __name__ == '__main__':
     d = 3
     n_point = 1000
-    rounding = 0
+    rounding = 3
 
     # 1 merge sort
     # 2 quick sort
