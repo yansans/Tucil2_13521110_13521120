@@ -61,7 +61,7 @@ def menu(type : int) -> int:
         minval = 0
         err = "Rounding must be greater than 0"
     elif type == 4:
-        prompt = "Enter the sorting method\n1. Merge sort(default) \n2. Quick sort\n :"
+        prompt = "Enter the sorting method\n1. Merge sort(default) \n2. Quick sort\n: "
         minval = 1
         err = "Sorting method must be 1 or 2"
     while True:
@@ -91,7 +91,7 @@ def animation():
     i = 0
     for i in range(len(animation)):
         print(animation[i % len(animation)], end='\r')
-        time.sleep(0.1)
+        time.sleep(0.05)
 
 def startscreen():
     animation()
